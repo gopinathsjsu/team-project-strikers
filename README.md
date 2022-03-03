@@ -16,7 +16,7 @@ Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu
 
 [Meeting documents](https://github.com/gopinathsjsu/team-project-strikers/tree/main/meetings/20220302)
 
-**Tasks before next meeting**
+**Action items before next meeting**
 1. Do the AWS tutorial
 
 *Next Meeting: Mar 9, 2022*  
