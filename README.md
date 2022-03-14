@@ -64,7 +64,7 @@ Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu
 
 ![Response](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Sprint_Draft_20220314.png)
 
-**Action items before next meeting**
+**Action items before next meeting**  
 None
 
 *Next Meeting: Mar 15, 2022*
