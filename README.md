@@ -36,3 +36,21 @@ Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu
 1. Select the topic, Front-End or Back-End, want to join.
 
 *Next Meeting: Mar 10, 2022*
+
+--------------------
+## Text Meeting Mar 10, 2022
+
+* FrontEnd Topic: Govinder Somal, Allen Wu
+* BackEnd Topic: Rohan Patel, Zi Shun Yang
+* To discuss in next team meeting
+  1. How long of each sprint?
+  2. what we want to deliver in the first sprint?
+  3. API interface between front-end and back-end
+  4. Add some items on [Kanban](https://github.com/gopinathsjsu/team-project-strikers/projects/1)
+
+![Response](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Topic_Response_20220310.png)
+
+**Action items before next meeting**
+1. Sprint Proposal
+
+*Next Meeting: Mar 14, 2022*
