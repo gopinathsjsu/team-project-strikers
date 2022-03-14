@@ -29,6 +29,7 @@ Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu
 * Assign the number of ppl. in each topic.
 * Create a [poll](https://forms.gle/sVc2msaGhxda3tD77) for topic selection.
 
+![Project architecture(Customer User)](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Project_Architecture_user_20220309.png)
 [Meeting documents](https://github.com/gopinathsjsu/team-project-strikers/tree/main/meetings/20220309)
 
 **Action items before next meeting**
