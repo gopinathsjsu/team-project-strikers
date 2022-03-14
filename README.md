@@ -54,3 +54,17 @@ Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu
 1. Sprint Proposal
 
 *Next Meeting: Mar 14, 2022*
+
+--------------------
+## Front-End Text Meeting Mar 14, 2022
+
+* First Sprint will take 2 weeks.
+* First Sprint will deliver working index, signup, and login pages for customers and employees.
+* Draft API interfaces
+
+![Response](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Sprint_Draft_20220314.png)
+
+**Action items before next meeting**
+None
+
+*Next Meeting: Mar 15, 2022*
