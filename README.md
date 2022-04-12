@@ -68,3 +68,9 @@ Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu
 None
 
 *Next Meeting: Mar 15, 2022*
+
+--------------------
+## Front-End/Back-End Text Meeting Mar 15, 2022
+
+* Discussed admin/customer login for front-end
+* Discussed api's and cognito pools for back-end
