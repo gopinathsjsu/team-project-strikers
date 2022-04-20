@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Raleway", Arial, Helvetica, sans-serif
+        }
+        .bgimg {
+            background-image: url('https://gaming-thrones.com/img/fallout76/whitespringgnome1.jpg');
+
+            /* Full height */
+            height: 1000px;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+    <title>Sign Up</title>
+</head>
+<body>
+
+<div class="w3-bar w3-yellow">
+    <a class="w3-bar-item w3-button w3-red w3-mobile w3-xlarge">The Whitespring</a>
+</div>
+
+
+
+<section class=" w3-container w3-third">
+    <p><p>
+</section>
+
+
+<section class="form-wrap w3-container w3-third w3-center">
+    <h2>Join The Whitespring Resort Honors</h2>
+    <form id="registrationForm">
+        <p><input class="w3-input w3-padding-16 w3-border" id="emailInputRegister" type="email" placeholder="Email"
+                  name="Email"
+                  pattern=".*" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" id="passwordInputRegister" type="password"
+                  placeholder="Password"
+                  pattern=".*" required></p>
+        <p><input class="w3-input w3-padding-16 w3-border" id="password2InputRegister" type="password"
+                  placeholder="Confirm Password" pattern=".*" required></p>
+        <p>
+            <button class="w3-margin-bottom w3-button w3-black w3-padding-large " type="submit">Sign Up</button>
+        </p>
+    </form>
+</section>
+<section class=" w3-container w3-third">
+    <p><p>
+</section>
+<section class=" w3-container bgimg">
+    <p><p>
+</section>
+<script src="js/vendor/jquery-3.1.0.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/aws-cognito-sdk.min.js"></script>
+<script src="js/vendor/amazon-cognito-identity.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/cognito-auth.js"></script>
+</body>
+</html>
