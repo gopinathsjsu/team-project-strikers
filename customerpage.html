@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelFast</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+    <header>
+
+        
+          <a href="#"><img src="logo.png" class="logo"> </a> <h1><u><b>Livingston Hotels</b></u></h1>
+          
+  
+          <ul>
+            <li> <a href="#">Home</a> </li>
+            <li> <a href="#hoteloptions" class="nav-link">Room Options</a> </li>
+            <li> <a href="#bookhotel" class="nav-link">Book Hotels</a> </li>
+            <li> <a href="#amenities" class="nav-link">Amenities</a> </li>
+            <li> <a href="#photogallery" class="nav-link">Photo Gallery</a> </li>
+            <li> <a href="#contact" class="nav-link">Contact Us</a> </li>
+          </ul>
+    </header>
+    <div class="content">
+      <div class="textBox">
+        
+        <h2>It's not justy a hotel it's paradise</h2>
+        <p>With our state of the art pricing along with our state of the art facilities, who wouldn't want to stay at Livingston Hotels. Book your stay today and you won't regret it!</p>
+      </div>
+      <div class="imgBox">
+        <img src="hotel.jpg" class="hotel">
+      </div>
+    </div>
+  
+      
+        
+      
+    </header>
+</section>
+
+<section class="book" id="bookhotel">
+  <div class="container flex">
+    <div class="input grid">
+      <div class="box">
+        <label>Check-in:</label>
+        <input type="date" placeholder="Check-in-Date">
+      </div>
+      <div class="box">
+        <label>Check-out:</label>
+        <input type="date" placeholder="Check-out-Date">
+      </div>
+      <div class="box">
+        <label>Number of Adults:</label> <br>
+        <input type="number" placeholder="0">
+      </div>
+      <div class="box">
+        <label>Number of Children:</label> <br>
+        <input type="number" placeholder="0">
+      </div>
+    </div>
+    <div class="search">
+      <input type="submit" value="SEARCH">
+      
+    </div>
+  </div>
+</section>
+
+</section>
+<section class="hotel options" id="hoteloptions">
+  <div class="container">
+    <div class="heading_top flex1">
+      <div class="heading">
+        <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
+        <h2>Room $ Options</h2>
+      </div>
+      <div class="button">
+        <button class="btn1">VIEW ALL</button>
+      </div>
+    </div>
+
+    <div class="content grid">
+      <div class="box">
+        <div class="img">
+          <img src="singleroom.jpg" alt="">
+        </div>
+        <div class="text">
+          <h3>Single Room</h3>
+          <p> <span>$</span>70 <span>/per night</span> </p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="img">
+          <img src="doubleroom.jpg" alt="">
+        </div>
+        <div class="text">
+          <h3>Double Room</h3>
+          <p> <span>$</span>120 <span>/per night</span> </p>
+        </div>
+      </div>
+      <div class="box">
+        <div class="img">
+          <img src="suite.jpg" alt="">
+        </div>
+        <div class="text">
+          <h3>Suite</h3>
+          <p> <span>$</span>160 <span>/per night</span> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="Amenity top" id="amenities">
+  <div class="container flex">
+    <div class="left">
+      <img src="amenity.jpg" alt="">
+    </div>
+    <div class="right">
+      <div class="text">
+        <h2><u>Our Amenities</u></h2>
+        <p> We offer a variety of amenities, here are a few!</p>
+      </div>
+      <div class="accordionWrapper">
+        <div class="accordionItem open">
+          <h2 class="accordionIHeading">Fitness/Gym</h2>
+          <div class="accordionItemContent">
+            <p>Get a workout in while you're on your stay with our state of the art gym!
+            </p>
+          </div>
+        </div>
+        <div class="accordionItem close">
+          <h2 class="accordionIHeading">Swimming Pool</h2>
+          <div class="accordionItemContent">
+            <p>Enjoy a day out in the sun with our kid-freindly pool, or a chilly night out in our jaccuzi!
+            </p>
+          </div>
+        </div>
+        <div class="accordionItem close">
+          <h2 class="accordionIHeading">Parking</h2>
+          <div class="accordionItemContent">
+            <p>Parking is offered with the stay at no additional cost!
+            </p>
+          </div>
+        </div>
+        <div class="accordionItem close">
+          <h2 class="accordionIHeading">Meals</h2>
+          <div class="accordionItemContent">
+            <p>With your stay we offer continental breakfast, lunch, and dinner!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  var accItem = document.getElementsByClassName('accordionItem');
+  var accHD = document.getElementsByClassName('accordionIHeading');
+
+  for (i = 0; i < accHD.length; i++) {
+    accHD[i].addEventListener('click', toggleItem, false);
+  }
+
+  function toggleItem() {
+    var itemClass = this.parentNode.className;
+    for (var i = 0; i < accItem.length; i++) {
+      accItem[i].className = 'accordionItem close';
+    }
+    if (itemClass == 'accordionItem close') {
+      this.parentNode.className = 'accordionItem open';
+    }
+  }
+</script>
+
+<!-- Gallery  -->
+<!-- <section class="gallery hotel " id="photogallery"> 
+  <div class="container">
+    <div class="heading_top flex1">
+      <div class="heading">
+        <h5>WELCOME TO OUR PHOTO GALLERY</h5>
+        <h2>Photo Gallery of Our Hotel</h2>
+      </div>
+      <div class="button">
+        <button class="btn1">VIEW GALLERY</button>
+      </div>
+    </div>
+
+    <div class="owl-carousel owl-theme">
+      <div class="item">
+        <img src="photogallery1.jpg" alt="">
+      </div>
+      <div class="item">
+        <img src="photogallery 2.jpg" alt="">
+      </div>
+      <div class="item">
+        <img src="photogallery 3.jpg" alt="">
+      </div>
+      <div class="item">
+        <img src="photogallery 4.jpg" alt="">
+      </div>
+      <div class="item">
+        <img src="photogallery 5.jpg" alt="">
+      </div>
+      <div class="item">
+        <img src="photogallery 6.jpg" alt="">
+      </div>
+      <div class="item">
+        <img src="photogallery 7.jpg" alt="">
+      </div>
+      <div class="item">
+        <img src="photogallery8.jpg" alt="">
+      </div>
+    </div>
+
+  </div>
+</section> -->
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script>
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    dots: false,
+    navText: ["<i class='fas fa-chevron-left'></i>", "<i class='fas fa-chevron-right'></i>"],
+    responsive: {
+      0: {
+        items: 1
+      },
+      768: {
+        items: 2
+      },
+      1000: {
+        items: 4
+      }
+    }
+  })
+</script> -->
+
+<!-- Contact  -->
+<footer>
+  <div class="container grid top">
+    <div class="box" id="contact">
+      <p> For any questions or concerns, please see our contact options below. </p>
+
+      <p>Accepted payment methods</p>
+      <div class="payment grid">
+        <img src="https://img.icons8.com/color/48/000000/visa.png" />
+        <img src="https://img.icons8.com/color/48/000000/mastercard.png" />
+        <img src="https://img.icons8.com/color-glass/48/000000/paypal.png" />
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>Contact Us</h3>
+
+      <ul>
+        <li>2134 Grand Ave, Pines Way, San Francisco CA 98541</li>
+        <li><i class="far fa-envelope"></i>LingstonHotels@gmail.com </li>
+        <li><i class="far fa-phone-alt"></i>510 836 0958 </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
