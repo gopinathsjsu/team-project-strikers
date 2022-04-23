@@ -118,15 +118,25 @@ var Strikers = window.Strikers || {};
         var email = $('#emailInputSignin').val();
         var password = $('#passwordInputSignin').val();
         event.preventDefault();
+
+        var paths = window.location.href.split('/');
+        var EMPLOYEE_PORTAL_PAGE = 'employee_portal.html';
         signin(email, password,
             function signinSuccess() {
                 console.log('Successfully Logged In');
-                window.location.href = './loginok.png';
+                if (EMPLOYEE_PORTAL_PAGE === paths[paths.length-1] ) {
+                    // alert(EMPLOYEE_PORTAL);
+                    window.location.href = './employee_panel.html';
+                }
+                else {
+                    window.location.href = './customerpage.html';
+                }
+                //window.location.href = './loginok.png';
             },
             function signinError(err) {
-                //alert(err);
+                alert(err);
                 console.error(err);
-                window.location.href = './loginfailed.png';
+                // window.location.href = './loginfailed.png';
             }
         );
     }
