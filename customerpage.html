@@ -38,7 +38,7 @@
       
     </header>
 </section>
-
+<!-- Booking a hotel  -->
 <section class="book" id="bookhotel">
   <div class="container flex">
     <div class="input grid">
@@ -65,6 +65,60 @@
     </div>
   </div>
 </section>
+<script>
+ var callBookingHotelAPI = async (bookingId) => {  //Start of boooking hotel API
+  var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+  var raw = JSON.stringify({"bookingID": bookingId});
+  var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      const res = await fetch("", requestOptions);
+      const json = await res.json();
+      const body = json['guestList'];
+      const customer_len = Object.keys(body).length;
+
+      var col = [];
+      for (let i = 0; i < customer_len; i++) {
+        for (var key in body[i]) {
+          if(col.indexOf(key) === -1) {
+            col.push(key);
+          }
+        }
+      }
+
+      var table = document.createElement("table");
+
+var tr = table.insertRow(-1);                   // TABLE ROW.
+
+for (var i = 0; i < col.length; i++) {
+  var th = document.createElement("th");      // TABLE HEADER.
+  th.innerHTML = col[i];
+  tr.appendChild(th);
+}
+
+for (var i = 0; i < customer_len; i++) {
+
+  tr = table.insertRow(-1);
+
+  for (var j = 0; j < col.length; j++) { 
+    var tabCell = tr.insertCell(-1);
+    tabCell.innerHTML = body[i][col[j]];
+  }
+}
+
+var divContainer = document.getElementById("BookingReservation");
+divContainer.innerHTML = "";
+divContainer.appendChild(table);
+}
+
+
+</script>
+
+<!-- End of API call  -->
 
 </section>
 <section class="hotel options" id="hoteloptions">
@@ -146,19 +200,19 @@
         <div class="accordionItem close">
           <h2 class="accordionIHeading">Meals</h2>
           <div class="accordionItemContent">
-            <p>With your stay we offer continental breakfast, lunch, and dinner!
+            <p>With your stay we offer continental breakfast, lunch, and dinner!  
             </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </div>  
 </section>
 <script>
-  var accItem = document.getElementsByClassName('accordionItem');
+  var accItem = document.getElementsByClassName('accordionItem');  
   var accHD = document.getElementsByClassName('accordionIHeading');
 
-  for (i = 0; i < accHD.length; i++) {
+  for (i = 0; i < accHD.length; i++) { 
     accHD[i].addEventListener('click', toggleItem, false);
   }
 
