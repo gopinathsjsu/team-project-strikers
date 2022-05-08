@@ -2,7 +2,7 @@
 
 var Strikers = window.Strikers || {};
 
-(function rideScopeWrapper($) {
+(function strikerScopeWrapper($) {
     var authToken;
     Strikers.authToken.then(function setAuthToken(token) {
         if (token) {
@@ -30,7 +30,7 @@ var Strikers = window.Strikers || {};
             contentType: 'application/json',
             success: completeRequest,
             error: function ajaxError(jqXHR, textStatus, errorThrown) {
-                console.error('Error requesting ride: ', textStatus, ', Details: ', errorThrown);
+                console.error('Error requesting event: ', textStatus, ', Details: ', errorThrown);
                 console.error('Response: ', jqXHR.responseText);
                 alert('An error occured when requesting your unicorn:\n' + jqXHR.responseText);
             }
