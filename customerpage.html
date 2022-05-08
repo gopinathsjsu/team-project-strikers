@@ -82,6 +82,19 @@
 	</style>
   <script src="js/testCity1.js"></script>
   <script src="js/hotelapisupplier.js"></script>
+ 
+<table>
+		<tr>
+			<td>Checkin Date:<div id="checkin_date"></div>
+			</td>
+			<td>Checkout Date:<div id="checkout_date"></div>
+			</td>
+		</tr>
+	</table>
+	<p>List of Hotel available:</p>
+	<button id="request">Book selected</button>
+	<p id="hotels"></p>
+
   <script>
 
 		function showHotels(results) {
@@ -105,21 +118,11 @@
 			// 	alert($("#hotelstable tr.selected td:first").find("img").attr("alt"));
 			// });
 		}
-
+    
+    $('#checkin_date').text("2022-05-17");
+	$('#checkout_date').text("2022-06-05");
+	showHotels(testCity1.hotels);
   </script>
-
-<table>
-		<tr>
-			<td>Checkin Date:<div id="checkin_date"></div>
-			</td>
-			<td>Checkout Date:<div id="checkout_date"></div>
-			</td>
-		</tr>
-	</table>
-	<p>List of Hotel available:</p>
-	<button id="request">Book selected</button>
-	<p id="hotels"></p>
-
 
 </section>
 
