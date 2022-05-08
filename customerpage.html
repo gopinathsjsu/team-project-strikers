@@ -65,6 +65,69 @@
     </div>
   </div>
 </section>
+
+<section id="hotelslist">
+
+	<style>
+		td {
+			border: 1px #DDD solid;
+			padding: 5px;
+			cursor: pointer;
+		}
+
+		.selected {
+			background-color: lightblue;
+			color: #FFF;
+		}
+	</style>
+  <script src="js/testCity1.js"></script>
+  <script src="js/hotelapisupplier.js"></script>
+  <script>
+
+		function showHotels(results) {
+			$('#hotels').append("<table id='hotelstable'>");
+			results.forEach(function (el) {
+				if (el.hasOwnProperty('hotelId')) {
+					$('#hotelstable').append("<tr><td><img alt='" + el.hotelId + "' src='" + el.thumbnailUrl + "'>" + 
+						"<td>" + el.name + "</td>" +
+						"<td>" + el.ratesSummary.minCurrencyCode + " " + el.ratesSummary.minPrice + "</td></tr>");
+				}
+			});
+			$('#hotels').append("</table");
+
+			$("#hotelstable tr").click(function () {
+				$(this).addClass('selected').siblings().removeClass('selected');
+				// var value = $(this).find('td:first').find("img").attr("alt");
+				// alert(value);
+			});
+
+			// $('.ok').on('click', function (e) {
+			// 	alert($("#hotelstable tr.selected td:first").find("img").attr("alt"));
+			// });
+		}
+
+  </script>
+
+<table>
+		<tr>
+			<td>Checkin Date:<div id="checkin_date"></div>
+			</td>
+			<td>Checkout Date:<div id="checkout_date"></div>
+			</td>
+		</tr>
+	</table>
+	<p>List of Hotel available:</p>
+	<button id="request">Book selected</button>
+	<p id="hotels"></p>
+
+
+	<textarea class="authToken"></textarea>
+
+
+</section>
+
+
+
 <script>
  var callBookingHotelAPI = async (bookingId) => {  //Start of boooking hotel API
   var myHeaders = new Headers();
