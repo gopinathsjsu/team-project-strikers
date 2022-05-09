@@ -59,12 +59,19 @@
         <input type="number" placeholder="0">
       </div>
     </div>
-    <div class="search">
-      <input type="submit" value="SEARCH">
+      <button class="search" onClick="myOnClickFn()">Search</button>
+
+<script>
+  function myOnClickFn(){
+    document.location.href="gethotelbooking_test.html";
+  } 
+</script>
       
     </div>
   </div>
 </section>
+
+
 <script>
  var callBookingHotelAPI = async (bookingId) => {  //Start of boooking hotel API
   var myHeaders = new Headers();

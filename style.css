@@ -73,10 +73,10 @@ margin-left: 40px;
     padding: 20px 20px 40px 20px;
   }
   
-  .book .search {
+ .book .search {
     background: #3f9cc1;
     padding: 20px;
-  }
+  } */
   
   input {
     width: 100%;
@@ -102,7 +102,7 @@ margin-left: 40px;
     font-weight: bold;
     font-size: 20px;
     margin-top: 40px;
-  }
+  } */
   .flex1 {
     display: flex;
     justify-content: space-between;
