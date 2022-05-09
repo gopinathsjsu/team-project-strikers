@@ -74,3 +74,36 @@ None
 
 * Discussed admin/customer login for front-end
 * Discussed api's and cognito pools for back-end
+
+--------------------
+## Front-End/Back-End Meeting Mar 16, 2022
+
+--------------------
+## Front-End/Back-End Meeting Mar 17, 2022
+
+--------------------
+## Front-End/Back-End Meeting Mar 29, 2022
+
+--------------------
+## Front-End/Back-End Meeting Mar 30, 2022
+
+--------------------
+## Front-End/Back-End Meeting Mar 31, 2022
+
+--------------------
+## Front-End/Back-End Meeting April 13, 2022
+
+--------------------
+## Front-End/Back-End Meeting April 14, 2022
+
+--------------------
+## Front-End/Back-End Meeting April 15, 2022
+
+--------------------
+## Front-End/Back-End Meeting April 27, 2022
+
+--------------------
+## Front-End/Back-End Meeting April 28, 2022
+
+--------------------
+## Front-End/Back-End Meeting April 29, 2022
