@@ -68,12 +68,24 @@
 			});
 		}
 
+		function getUsername() {
+			Strikers.authUser
+			.then(e => {document.cookie = 'username=' + e.username;})
+			.catch(err => {
+				alert(err);
+				window.location.href = '/login.html';
+			});
+			return getCookie('username');
+		}
+
 		// call booking api
 		var callBookingHotelAPI = async (hotelId) => {  //Start of boooking hotel API
 			var myHeaders = new Headers();
 			myHeaders.append("Content-Type", "application/json");
+			var username = await getUsername();
+			console.log(username);
 			var raw = JSON.stringify({
-				"username": "testpage",
+				"username": username,
 				"hotelId": "54695306",
 				"checkin_date": "2022-07-10",
 				"checkout_date": "2022-07-30",

@@ -29,6 +29,25 @@ var Strikers = window.Strikers || {};
         userPool.getCurrentUser().signOut();
     };
 
+    //passing the current user to enviroment variable
+    Strikers.authUser = new Promise(function fetchCurrentAuthToken(resolve, reject) {
+        var cognitoUser = userPool.getCurrentUser();
+
+        if (cognitoUser) {
+            cognitoUser.getSession(function sessionCallback(err, session) {
+                if (err) {
+                    reject(err);
+                } else if (!session.isValid()) {
+                    resolve(null);
+                } else {
+                    resolve(userPool.getCurrentUser());
+                }
+            });
+        } else {
+            resolve(null);
+        }
+    });
+
     Strikers.authToken = new Promise(function fetchCurrentAuthToken(resolve, reject) {
         var cognitoUser = userPool.getCurrentUser();
 
@@ -129,7 +148,7 @@ var Strikers = window.Strikers || {};
                     window.location.href = './employee_panel.html';
                 }
                 else {
-                    window.location.href = './customerpage.html';
+                    window.location.href = './gethotelbooking_test.html';//'./customerpage.html';
                 }
                 //window.location.href = './loginok.png';
             },

@@ -4,12 +4,14 @@
  * 
 */
 
+//helper function to get correct date format
 function getDatefromTodayFormat(day) {
     var d = new Date();
     d.setDate(d.getDate() + day);
     return d.toISOString().split('T')[0];
 }
 
+//helper function to pass enviroment variable
 function getCookie(cookieName) {
     let cookie = {};
     document.cookie.split(';').forEach(function (el) {
@@ -19,7 +21,7 @@ function getCookie(cookieName) {
     return cookie[cookieName];
 }
 
-
+// api function to get "locationId" by search location(e.g. "San Jose")
 function getDestinationId(locations) {
     const settings = {
         "async": true,
@@ -33,10 +35,17 @@ function getDestinationId(locations) {
     };
     $.ajax(settings).done(function (response) {
         console.log(response[0]);
-        document.cookie = 'locationId=' + response[0].id;
+        document.cookie = 'locationId=' + response[0].id;  //store the locationId to cookie for next function to retrieve
     });
 }
 
+
+/**
+ * use this function for search hotel and return a list of result
+ * @param {*} location , e.g. "San Jose"
+ * @param {*} date_checkin e.g. "2022-06-10"
+ * @param {*} date_checkout e.g. same above
+ */
 function searchHotelbyLocationId(location, date_checkin, date_checkout) {
     getDestinationId(location);
     var locationId = getCookie('locationId');
@@ -52,7 +61,7 @@ function searchHotelbyLocationId(location, date_checkin, date_checkout) {
     };
     $.ajax(settings).done(function (response) {
         console.log(response);
-        showHotels(response.hotels);
+        showHotels(response.hotels); // show the list of hotel declared in html page
     });
 }
 
