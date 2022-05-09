@@ -103,12 +103,13 @@ margin-left: 40px;
     font-size: 20px;
     margin-top: 40px;
   } */
+
+ 
+  /*HOTEL OPTIONS*/ 
   .flex1 {
     display: flex;
     justify-content: space-between;
   }
- 
-  /*HOTEL OPTIONS*/ 
   .hoteloptions .grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -215,6 +216,8 @@ margin-left: 40px;
     box-sizing: border-box;
     box-shadow: 0 13px 43px 0 rgb(37 46 89 / 10%);
   }
+
+
   /*PHOTO GALLERY*/
    
   * {box-sizing:border-box}
