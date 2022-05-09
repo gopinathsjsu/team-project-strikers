@@ -148,7 +148,7 @@ var Strikers = window.Strikers || {};
                     window.location.href = './employee_panel.html';
                 }
                 else {
-                    window.location.href = './gethotelbooking_test.html';//'./customerpage.html';
+                    window.location.href = './customerpage.html';
                 }
                 //window.location.href = './loginok.png';
             },
