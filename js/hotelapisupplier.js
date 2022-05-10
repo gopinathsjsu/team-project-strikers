@@ -21,6 +21,8 @@ function getCookie(cookieName) {
     return cookie[cookieName];
 }
 
+
+
 // api function to get "locationId" by search location(e.g. "San Jose")
 function getDestinationId(locations) {
     const settings = {
@@ -39,6 +41,17 @@ function getDestinationId(locations) {
     });
 }
 
+var hotels;
+
+function findHotel(id) {
+    for (var i = 0; i < hotels.length; i++) {
+        if (hotels[i].hasOwnProperty('hotelId')) {
+            if (hotels[i]['hotelId'] == id) {
+                return hotels[i];
+            }
+        }
+    }
+}
 
 /**
  * use this function for search hotel and return a list of result
@@ -46,13 +59,13 @@ function getDestinationId(locations) {
  * @param {*} date_checkin e.g. "2022-06-10"
  * @param {*} date_checkout e.g. same above
  */
-function searchHotelbyLocationId(location, date_checkin, date_checkout) {
-    getDestinationId(location);
+async function searchHotelbyLocation(location, date_checkin, date_checkout, roomcount) {
+    await getDestinationId(location);
     var locationId = getCookie('locationId');
     const settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&date_checkout=" + date_checkout + "&location_id=" + locationId + "&date_checkin=" + date_checkin + "&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST",
+        "url": "https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&date_checkout=" + date_checkout + "&location_id=" + locationId + "&date_checkin=" + date_checkin + "&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=" + roomcount + "&amenities_ids=FINTRNT%2CFBRKFST",
         "method": "GET",
         "headers": {
             "X-RapidAPI-Host": "priceline-com-provider.p.rapidapi.com",
@@ -61,7 +74,76 @@ function searchHotelbyLocationId(location, date_checkin, date_checkout) {
     };
     $.ajax(settings).done(function (response) {
         console.log(response);
-        showHotels(response.hotels); // show the list of hotel declared in html page
+        hotels = response.hotels;
+        showHotels(hotels); // show the list of hotel declared in html page
+    }).fail(function (data) {
+        console.log("Request failed: " + data['responseText']);
+        showError(data['reponseText']);
+    })
+}
+
+function showError(error) {
+    $('#hotellist').empty();
+    $('#hotellist').append("<p>Request information not available for " +
+        $('#input_roomcount').val() + " room, " +
+        "checkin on " + $('#input_checkindate').val() + " and " +
+        "checkout on " + $('#input_checkoutdate').val() +
+        " in " + $('#input_city').val() + " : ");
+}
+
+function showHotels(results) {
+    $('#hotellist').empty();
+    $('#hotellist').append("<p>Hotels available for " +
+        $('#input_roomcount').val() + " room, " +
+        "checkin on " + $('#input_checkindate').val() + " and " +
+        "checkout on " + $('#input_checkoutdate').val() +
+        " in " + $('#input_city').val() + " : ");
+    $('#hotellist').append("<table id='hotelstable'>");
+    results.forEach(function (el) {
+        if (el.hasOwnProperty('hotelId') && el.hasOwnProperty('location')) {
+            $('#hotelstable').append("<tr><td><img alt='" + el.hotelId + "' src='" + el.thumbnailUrl + "'>" +
+                "<td>" +
+                "<p>" + el.name + " (" + el.starRating + "⭐ Hotel)</p>" +
+                "<p>Address: " + Object.values(el.location.address).toString().replaceAll(",", ", ") + "</p>" +
+                "<p>&nbsp;</p>" +
+                "<p>Amenities: " + Object.values(el.hotelFeatures.hotelAmenityCodes).toString().replaceAll(",", ", ") + "</p>" +
+                "<p>&nbsp;</p>" +
+                "<p>Overall Guest Rating: " + el.overallGuestRating + " / " + el.totalReviewCount + " Reviews</p>" +
+                "</td>" +
+                "<td>" + el.ratesSummary.minCurrencyCode + " " + el.ratesSummary.minPrice + "</td>" +
+                "<td><button type=\"button\" onclick=\"callBookingHotelAPI(" + el.hotelId + ")\">Book this</button></td>" +
+                "</tr>");
+        }
+    });
+    $('#hotellist').append("</table");
+
+    $("#hotelstable tr").click(function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
     });
 }
 
+
+function showReservations(results) {
+    $('#BookingReservation').empty();
+    $('#BookingReservation').append("<table id='BookingReservationtable'>");
+    results.forEach(function (el) {
+        $('#BookingReservationtable').append("<tr><td><img alt='" + el.bookingId + "' src='" + el.hotel.thumbnailUrl + "'>" +
+            "<td>" +
+            "<p>" + el.hotel.name + " (" + el.hotel.starRating + "⭐ Hotel)</p>" +
+            "<p>Address: " + Object.values(el.hotel.location.address).toString().replaceAll(",", ", ") + "</p>" +
+            "<p>&nbsp;</p>" +
+            "<p>Amenities: " + Object.values(el.hotel.hotelFeatures.hotelAmenityCodes).toString().replaceAll(",", ", ") + "</p>" +
+            "<p>&nbsp;</p>" +
+            "<p>Overall Guest Rating: " + el.hotel.overallGuestRating + " / " + el.hotel.totalReviewCount + " Reviews</p>" +
+            "</td>" +
+            "<td>" + el.hotel.ratesSummary.minCurrencyCode + " " + el.hotel.ratesSummary.minPrice + "</td>" +
+            "<td><button type=\"button\" onclick=\"callCancelHotelAPI(" + el.bookingId + ")\">Cancel this Booking</button></td>" +
+            "</tr>"); 
+    });
+    $('#BookingReservation').append("</table");
+
+    $("#BookingReservationtable tr").click(function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
+    });
+
+}

@@ -1,190 +1,302 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Whitespring</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Whitespring</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="js/vendor/jquery-3.1.0.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/aws-cognito-sdk.min.js"></script>
+  <script src="js/vendor/amazon-cognito-identity.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/cognito-auth.js"></script>
+  <script src="js/hotelapisupplier.js"></script>
+
+  <script src="js/testCity1.js"></script>
+
 </head>
+
 <body>
-    <section>
+  <section>
     <header>
 
-        
-          <a href="#"><img src="logo.jpg" class="logo"> </a> <h1><u><b>Whitespring Hotels</b></u></h1>
-          
-  
-          <ul>
-            <li> <a href="#home" class="nav-link">Home</a> </li>
-            <li> <a href="#hoteloptions" class="nav-link">Room Options</a> </li>
-            <li> <a href="#bookhotel" class="nav-link">Book Hotels</a> </li>
-            <li> <a href="#amenities" class="nav-link">Amenities</a> </li>
-            <li> <a href="#photogallery" class="nav-link">Photo Gallery</a> </li>
-            <li> <a href="#contact" class="nav-link">Contact Us</a> </li>
-          </ul>
+
+      <a href="#"><img src="logo.jpg" class="logo"> </a>
+      <h1><u><b>Whitespring Hotels</b></u></h1>
+
+
+      <ul>
+        <li> <a href="#home" class="nav-link">Home</a> </li>
+        <li> <a href="#hoteloptions" class="nav-link">Room Options</a> </li>
+        <li> <a href="#bookhotel" class="nav-link">Book Hotels</a> </li>
+        <li> <a href="#amenities" class="nav-link">Amenities</a> </li>
+        <li> <a href="#photogallery" class="nav-link">Photo Gallery</a> </li>
+        <li> <a href="#contact" class="nav-link">Contact Us</a> </li>
+      </ul>
     </header>
     <div class="content" id="home">
       <div class="textBox">
-        
+
         <h2>It's not justy a hotel it's paradise</h2>
-        <p>With our state of the art pricing along with our state of the art facilities, who wouldn't want to stay at Livingston Hotels. Book your stay today and you won't regret it!</p>
+        <p>With our state of the art pricing along with our state of the art facilities, who wouldn't want to stay at
+          Livingston Hotels. Book your stay today and you won't regret it!</p>
       </div>
       <div class="imgBox">
         <img src="hotel.jpg" class="hotel">
       </div>
     </div>
-  
-      
-        
-      
+
+
+
+
     </header>
-</section>
-<!-- Booking a hotel  -->
-<section class="book" id="bookhotel" >
-  <div class="container flex">
-    <div class="input grid">
-      <div class="box">
-        <label>Check-in:</label>
-        <input type="date" placeholder="Check-in-Date">
+  </section>
+  <!-- Booking a hotel  -->
+
+  <style>
+    td {
+      border: 1px #DDD solid;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .selected td {
+      background-color: lightblue;
+      color: #FFF;
+    }
+  </style>
+
+  <section class="book" id="searchhotel">
+    <div class="container flex">
+      <div class="input grid">
+        <div class="box">
+          <label>Check-in:</label>
+          <input type="date" id="input_checkindate" placeholder="Check-in-Date">
+        </div>
+        <div class="box">
+          <label>Check-out:</label>
+          <input type="date" id="input_checkoutdate" placeholder="Check-out-Date">
+        </div>
+        <div class="box">
+          <label>Number of Rooms:</label> <br>
+          <input type="number" id="input_roomcount" placeholder="1" value="1">
+        </div>
+        <div class="box">
+          <label>Destinations City:</label> <br>
+          <input type="text" id="input_city" placeholder="San Jose" value="San Jose">
+        </div>
       </div>
-      <div class="box">
-        <label>Check-out:</label>
-        <input type="date" placeholder="Check-out-Date">
-      </div>
-      <div class="box">
-        <label>Number of Adults:</label> <br>
-        <input type="number" placeholder="0">
-      </div>
-      <div class="box">
-        <label>Number of Children:</label> <br>
-        <input type="number" placeholder="0">
-      </div>
-    </div>
       <button class="search" onClick="myOnClickFn()">Search</button>
 
-<script>
-  function myOnClickFn(){
-    document.location.href="gethotelbooking_test.html";
-  } 
-</script>
-      
+      <script>
+        $('#searchhotel').ready(function () {
+          var d = new Date(); //today 
+          $('#input_checkindate').val(d.toISOString().split("T")[0]);
+          d.setDate(d.getDate() + 1); //tomorrow
+          $('#input_checkoutdate').val(d.toISOString().split("T")[0]);
+        });
+        function myOnClickFn() {
+          let roomcount = $('#input_roomcount').val();
+          let checkin_date = $('#input_checkindate').val();
+          let checkout_date = $('#input_checkoutdate').val();
+          let location = $('#input_city').val();
+          $('#hotellist').empty();
+          $('#hotellist').append("<p> Looking up for information ... </p>");
+          searchHotelbyLocation(location, checkin_date, checkout_date, roomcount);
+          //  document.location.href = "gethotelbooking_test.html";
+        } 
+      </script>
+
     </div>
-  </div>
-</section>
+    </div>
+  </section>
+  <section id="searchhotelresult">
+    <div style="height:440; position:relative; overflow:auto" id="hotellist">
 
+    </div>
 
-<script>
- var callBookingHotelAPI = async (bookingId) => {  //Start of boooking hotel API
-  var myHeaders = new Headers();
+  </section>
+
+  <script>
+    function getUsername() {
+      Strikers.authUser
+        .then(e => { document.cookie = 'username=' + e.username; })
+        .catch(err => {
+          alert(err);
+          window.location.href = '/login.html';
+        });
+      return getCookie('username');
+    }
+
+    var callBookingHotelAPI = async (hotelId) => {  //Start of boooking hotel API
+      var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-  var raw = JSON.stringify({"bookingID": bookingId});
-  var requestOptions = {
+      var username = await getUsername();
+      // var roomcount = $('#input_roomcount').val();
+      var checkin_date = $('#input_checkindate').val();
+      var checkout_date = $('#input_checkoutdate').val();
+      console.log(username);
+      var hotelObj = findHotel(hotelId);
+      var raw = JSON.stringify({
+        "username": username,
+        "hotel": hotelObj,
+        "checkin_date": checkin_date,
+        "checkout_date": checkout_date,
+        "options": "some options"
+      });
+      var requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
       };
-      const res = await fetch("", requestOptions);
+      const res = await fetch(_config.api.invokeUrl + "/booking", requestOptions);
       const json = await res.json();
-      const body = json['guestList'];
-      const customer_len = Object.keys(body).length;
+      console.log(json);
+      alert("booked");
+      // const body = json['guestList'];
+      // const customer_len = Object.keys(body).length;
 
-      var col = [];
-      for (let i = 0; i < customer_len; i++) {
-        for (var key in body[i]) {
-          if(col.indexOf(key) === -1) {
-            col.push(key);
-          }
-        }
-      }
+      // var col = [];
+      // for (let i = 0; i < customer_len; i++) {
+      //   for (var key in body[i]) {
+      //     if (col.indexOf(key) === -1) {
+      //       col.push(key);
+      //     }
+      //   }
+      // }
 
-      var table = document.createElement("table");
+      // var table = document.createElement("table");
 
-var tr = table.insertRow(-1);                   // TABLE ROW.
+      // var tr = table.insertRow(-1);                   // TABLE ROW.
 
-for (var i = 0; i < col.length; i++) {
-  var th = document.createElement("th");      // TABLE HEADER.
-  th.innerHTML = col[i];
-  tr.appendChild(th);
-}
+      // for (var i = 0; i < col.length; i++) {
+      //   var th = document.createElement("th");      // TABLE HEADER.
+      //   th.innerHTML = col[i];
+      //   tr.appendChild(th);
+      // }
 
-for (var i = 0; i < customer_len; i++) {
+      // for (var i = 0; i < customer_len; i++) {
 
-  tr = table.insertRow(-1);
+      //   tr = table.insertRow(-1);
 
-  for (var j = 0; j < col.length; j++) { 
-    var tabCell = tr.insertCell(-1);
-    tabCell.innerHTML = body[i][col[j]];
-  }
-}
+      //   for (var j = 0; j < col.length; j++) {
+      //     var tabCell = tr.insertCell(-1);
+      //     tabCell.innerHTML = body[i][col[j]];
+      //   }
+      // }
 
-var divContainer = document.getElementById("BookingReservation");
-divContainer.innerHTML = "";
-divContainer.appendChild(table);
-}
+      // var divContainer = document.getElementById("BookingReservation");
+      // divContainer.innerHTML = "";
+      // divContainer.appendChild(table);
+    }
 
 
-</script>
-<!-- Cancelling a hotel  -->
-<script>
-  var callCancelHotelAPI = async (cancellingId) => {  //Start of cancelling hotel API
-   var myHeaders = new Headers();
-       myHeaders.append("Content-Type", "application/json");
-   var raw = JSON.stringify({"bookingID": cancellingId});
-   var requestOptions = {
-         method: 'POST',
-         headers: myHeaders,
-         body: raw,
-         redirect: 'follow'
-       };
-       const res = await fetch("", requestOptions);
-       const json = await res.json();
-       const body = json['guestList'];
-       const customer_len = Object.keys(body).length;
- 
-       var col = [];
-       for (let i = 0; i < customer_len; i++) {
-         for (var key in body[i]) {
-           if(col.indexOf(key) === -1) {
-             col.push(key);
-           }
-         }
-       }
- 
-       var table = document.createElement("table");
- 
- var tr = table.insertRow(-1);                   // TABLE ROW.
- 
- for (var i = 0; i < col.length; i++) {
-   var th = document.createElement("th");      // TABLE HEADER.
-   th.innerHTML = col[i];
-   tr.appendChild(th);
- }
- 
- for (var i = 0; i < customer_len; i++) {
- 
-   tr = table.insertRow(-1);
- 
-   for (var j = 0; j < col.length; j++) { 
-     var tabCell = tr.insertCell(-1);
-     tabCell.innerHTML = body[i][col[j]];
-   }
- }
- 
- var divContainer = document.getElementById("CancelReservation");
- divContainer.innerHTML = "";
- divContainer.appendChild(table);
- }
- 
- 
- </script>
-<!-- End of API call  -->
+  </script>
 
-<!-- Amenities for the hotel  -->
-<section class="Amenity top" id="amenities">
-  <div class="container flex">
-    <div class="left">
-      <img src="amenity.jpg" alt="">
+
+    <div><button class="search" onClick="myBookingReservationLoad()">See My BookingReservation</button>
     </div>
+    
+  <section id="myBookingReservation">
+     <div style="height:440; position:relative; overflow:auto" id="BookingReservation">
+
+    </div>
+
+  </section>
+
+  <!-- getBookingReservation & Cancelling a hotel section -->
+  <script>
+
+    function myBookingReservationLoad() {
+      $('#BookingReservation').empty();
+      $('#BookingReservation').append("<p> Loading information ... </p>");
+      callGetBookingbyUser();
+    }
+
+    var callGetBookingbyUser = async () => {  //Start of get boooking reservation API
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      var username = await getUsername();
+      // var roomcount = $('#input_roomcount').val(); 
+      console.log(username);
+      var raw = JSON.stringify({
+        "username": username,
+      });
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      const res = await fetch(_config.api.invokeUrl + "/booking/byuser", requestOptions);
+      const json = await res.json();
+      console.log(json);
+      showReservations(json.body.Items);
+    }
+
+    var callCancelHotelAPI = async (cancellingId) => {  //Start of cancelling hotel API
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      var raw = JSON.stringify({ "bookingID": cancellingId });
+      var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      const res = await fetch(_config.api.invokeUrl + "/booking/byuser", requestOptions);
+      const json = await res.json();
+      console.log(json);
+      // const body = json['guestList'];
+      // const customer_len = Object.keys(body).length;
+
+      // var col = [];
+      // for (let i = 0; i < customer_len; i++) {
+      //   for (var key in body[i]) {
+      //     if (col.indexOf(key) === -1) {
+      //       col.push(key);
+      //     }
+      //   }
+      // }
+
+      // var table = document.createElement("table");
+
+      // var tr = table.insertRow(-1);                   // TABLE ROW.
+
+      // for (var i = 0; i < col.length; i++) {
+      //   var th = document.createElement("th");      // TABLE HEADER.
+      //   th.innerHTML = col[i];
+      //   tr.appendChild(th);
+      // }
+
+      // for (var i = 0; i < customer_len; i++) {
+
+      //   tr = table.insertRow(-1);
+
+      //   for (var j = 0; j < col.length; j++) {
+      //     var tabCell = tr.insertCell(-1);
+      //     tabCell.innerHTML = body[i][col[j]];
+      //   }
+      // }
+
+      // var divContainer = document.getElementById("CancelReservation");
+      // divContainer.innerHTML = "";
+      // divContainer.appendChild(table);
+    }
+
+
+  </script>
+  <!-- End of API call  -->
+
+  <!-- Amenities for the hotel  -->
+  <section class="Amenity top" id="amenities">
+    <div class="container flex">
+      <div class="left">
+        <img src="amenity.jpg" alt="">
+      </div>
       <div class="text">
         <h2><u></u></h2>
         <p> </p>
@@ -214,134 +326,138 @@ divContainer.appendChild(table);
         <div class="accordionItem close">
           <h2 class="accordionIHeading">Meals</h2>
           <div class="accordionItemContent">
-            <p>With your stay we offer continental breakfast, lunch, and dinner!  
+            <p>With your stay we offer continental breakfast, lunch, and dinner!
             </p>
           </div>
         </div>
       </div>
     </div>
-  </div>  
-</section>
-<script>
-  var accItem = document.getElementsByClassName('accordionItem');  
-  var accHD = document.getElementsByClassName('accordionIHeading');
+    </div>
+  </section>
+  <script>
+    var accItem = document.getElementsByClassName('accordionItem');
+    var accHD = document.getElementsByClassName('accordionIHeading');
 
-  for (i = 0; i < accHD.length; i++) { 
-    accHD[i].addEventListener('click', toggleItem, false);
-  }
-
-  function toggleItem() {
-    var itemClass = this.parentNode.className;
-    for (var i = 0; i < accItem.length; i++) {
-      accItem[i].className = 'accordionItem close';
+    for (i = 0; i < accHD.length; i++) {
+      accHD[i].addEventListener('click', toggleItem, false);
     }
-    if (itemClass == 'accordionItem close') {
-      this.parentNode.className = 'accordionItem open';
+
+    function toggleItem() {
+      var itemClass = this.parentNode.className;
+      for (var i = 0; i < accItem.length; i++) {
+        accItem[i].className = 'accordionItem close';
+      }
+      if (itemClass == 'accordionItem close') {
+        this.parentNode.className = 'accordionItem open';
+      }
     }
-  }
-</script>
+  </script>
 
-<!-- Photo Gallery -->
+  <!-- Photo Gallery -->
 
-<div class="slideshow-container" id="photogallery">
+  <div class="slideshow-container" id="photogallery">
 
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 3</div>
-    <img src="https://wallpaperaccess.com/full/6688193.jpg" style="width:100%">
-    <div class="text">Enjoy this gorgeous suite and this view for your honeymoon! </div>
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="https://wallpaperaccess.com/full/6688193.jpg" style="width:100%">
+      <div class="text">Enjoy this gorgeous suite and this view for your honeymoon! </div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img
+        src="https://www.marriott.com/content/dam/marriott-leisure/destinations/hero/north-america/usa/mo/st-louis/stLouis-hero-destinations.jpg.transform/mcom-leisure-transform-2880/image.jpg"
+        style="width:100%">
+      <div class="text">Enjoy this gorgeous suite when you want to spend quality time with your friends! </div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img
+        src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+        style="width:100%">
+      <div class="text">Enjoy one of our many amenitities with family and friends! </div>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
+  <br>
 
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="https://www.marriott.com/content/dam/marriott-leisure/destinations/hero/north-america/usa/mo/st-louis/stLouis-hero-destinations.jpg.transform/mcom-leisure-transform-2880/image.jpg" style="width:100%">
-    <div class="text">Enjoy this gorgeous suite when you want to spend quality time with your friends! </div>
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
   </div>
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fA%3D%3D&w=1000&q=80" style="width:100%">
-    <div class="text">Enjoy one of our many amenitities with family and friends! </div>
-  </div>
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
 
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>  
-  <a class="next" onclick="plusSlides(1)">&#10095;</a> 
-</div>
-<br>
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
 
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);   
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
 
 
 
 
-</script>
+  </script>
 
 
 
 
 
 
-<!-- Contact  -->
-<footer>
-  <div class="container grid top">
-    <div class="box" id="contact">
-      <p> For any questions or concerns, please see our contact options below. </p>
+  <!-- Contact  -->
+  <footer>
+    <div class="container grid top">
+      <div class="box" id="contact">
+        <p> For any questions or concerns, please see our contact options below. </p>
 
-      <p>Accepted payment methods</p>
-      <div class="payment grid">
-        <img src="https://img.icons8.com/color/48/000000/visa.png" />
-        <img src="https://img.icons8.com/color/48/000000/mastercard.png" />
-        <img src="https://img.icons8.com/color-glass/48/000000/paypal.png" />
+        <p>Accepted payment methods</p>
+        <div class="payment grid">
+          <img src="https://img.icons8.com/color/48/000000/visa.png" />
+          <img src="https://img.icons8.com/color/48/000000/mastercard.png" />
+          <img src="https://img.icons8.com/color-glass/48/000000/paypal.png" />
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Contact Us</h3>
+
+        <ul>
+          <li>Savage Divide, Appalachia, US</li>
+          <li>MODUS@whitespring.com</li>
+          <li>510 836 0958 </li>
+        </ul>
       </div>
     </div>
-
-    <div class="box">
-      <h3>Contact Us</h3>
-
-      <ul>
-        <li>Savage Divide, Appalachia, US</li>
-        <li>MODUS@whitespring.com</li>
-        <li>510 836 0958 </li>
-      </ul>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
-</html>
 
+</html>
