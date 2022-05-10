@@ -129,11 +129,12 @@
 
   <script>
     var username;
+
     function getUsername() {
       Strikers.authUser
         .then(e => { username = e.username; })
         .catch(err => {
-          alert(err);
+          alert("not login " + err);
           window.location.href = '/login.html';
         });
       return username;//getCookie('username');
