@@ -12,7 +12,7 @@ Contribution:
 
 GitHub Repo: https://github.com/gopinathsjsu/team-project-strikers  
 Project Board: https://github.com/gopinathsjsu/team-project-strikers/projects/1  
-Project Journal: https://github.com/gopinathsjsu/team-project-strikers/blob/main/README.md  
+Project Journal: [https://github.com/gopinathsjsu/team-project-strikers#project-journal](#project-journal)  
 Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFBIDQjalL-VVkMITGzVBJugDizFIrCg/edit?usp=sharing  
   
   
