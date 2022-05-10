@@ -85,30 +85,58 @@ Front-End
 
 --------------------
 ## Front-End/Back-End Meeting Mar 17, 2022
+Front-End
+* completed some UI including customer is able to view photos and access different parts of webpage 
+* completed some UI for employee including implementing loyalty
+* discussed how to include loyalty 
 
 --------------------
 ## Front-End/Back-End Meeting Mar 29, 2022
+Front-End
+* loyalty partially done for customer and employee viewing
+* finish loyalty by next sprint
 
 --------------------
 ## Front-End/Back-End Meeting Mar 30, 2022
+Front-End
+* loyalty is completed as rewards for UI viewing
+* Work on other functionality which is amenities
 
 --------------------
 ## Front-End/Back-End Meeting Mar 31, 2022
+Front-End
+* Some amenities addded for customer page along with more images and descriptions
+* employee booking information is viewable when a guest books a hotel
 
 --------------------
 ## Front-End/Back-End Meeting April 13, 2022
+Front-End
+* Amenities are completed 
+* employee Hotel Guest is viewable and completed 
 
 --------------------
 ## Front-End/Back-End Meeting April 14, 2022
+Front-End
+* Contact and photo gallery is viewable and completed for customer page
+* Employee UI completed just need backend integrations
 
 --------------------
 ## Front-End/Back-End Meeting April 15, 2022
+Front-End
+* Customer and Employee UI completed
+* waiting for backend api to continue integration 
 
 --------------------
 ## Front-End/Back-End Meeting April 27, 2022
+Front-End
+* Attempt to integrate backed API with front-end some errors
 
 --------------------
 ## Front-End/Back-End Meeting April 28, 2022
+Front-End
+* Worked together to complete API and front-end integration with APIs 
 
 --------------------
 ## Front-End/Back-End Meeting April 29, 2022
+Front-End
+* Successfully completed Front-End
