@@ -2,9 +2,21 @@
 CMPE-202 Spring, 2022 
 Professor Gopinath Vinodh
 
-Team Strikers
-Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu
+Team Name: Team Strikers  
+Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu  
+Contribution:
+* Rohan Patel: Build Hotel Search page and APIs
+* Zi Shun Yang: Build Backend-APIs
+* Govinder Somal: Build Customer-related pages 
+* Allen Wu: Build Homepage and Employee-related pages
 
+GitHub Repo: https://github.com/gopinathsjsu/team-project-strikers  
+Project Board: https://github.com/gopinathsjsu/team-project-strikers/projects/1  
+Project Journal: https://github.com/gopinathsjsu/team-project-strikers/blob/main/README.md  
+Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFBIDQjalL-VVkMITGzVBJugDizFIrCg/edit?usp=sharing  
+  
+  
+# Project Journal
 --------------------
 ## Meeting Mar 2, 2022
 
