@@ -21,6 +21,15 @@ Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFB
 ![Burndown Chart](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/burndown_chart.png)
 ![Weekly Scrum](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/weekly_scrum.png)
 
+# XP Principles
+Pair Programming – conducted over zoom instead of in-person
+
+Courage – encouraged each other when we were faced with bugs/difficulties
+
+Communication – great communication between back-end and front-end team to get API’s working with front-end integration
+![image](https://user-images.githubusercontent.com/90219670/167729637-6e2fa2c5-9b37-46d8-bea9-a787693120d2.png)
+
+
 # Project Journal
 --------------------
 ## Meeting Mar 2, 2022
