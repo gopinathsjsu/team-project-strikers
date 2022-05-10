@@ -15,6 +15,7 @@ Project Board: https://github.com/gopinathsjsu/team-project-strikers/projects/1
 Project Journal: [https://github.com/gopinathsjsu/team-project-strikers#project-journal](#project-journal)  
 Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFBIDQjalL-VVkMITGzVBJugDizFIrCg/edit?usp=sharing  
   
+[Presentation Slides](https://github.com/gopinathsjsu/team-project-strikers/blob/main/Slides/Presentation%20slides.pptx)
   
 # Scrum Practice
 ![Burndown Chart](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/burndown_chart.png)
