@@ -16,6 +16,10 @@ Project Journal: https://github.com/gopinathsjsu/team-project-strikers/blob/main
 Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFBIDQjalL-VVkMITGzVBJugDizFIrCg/edit?usp=sharing  
   
   
+# Scrum Practice
+![Burndown Chart](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/burndown_chart.png)
+![Weekly Scrum](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/weekly_scrum.png)
+
 # Project Journal
 --------------------
 ## Meeting Mar 2, 2022
