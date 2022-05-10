@@ -7,8 +7,8 @@ Team members: Rohan Patel, Zi Shun Yang, Govinder Somal, Allen Wu
 Contribution:
 * Rohan Patel: Build Hotel Search page and APIs
 * Zi Shun Yang: Build Backend-APIs
-* Govinder Somal: Build Customer-related pages 
-* Allen Wu: Build Homepage and Employee-related pages
+* Govinder Somal: Build Customer-related pages, prepare Project Journal
+* Allen Wu: Build Homepage and Employee-related pages, prepare Project Journal, Sprint Task, and Project Board
 
 GitHub Repo: https://github.com/gopinathsjsu/team-project-strikers  
 Project Board: https://github.com/gopinathsjsu/team-project-strikers/projects/1  
