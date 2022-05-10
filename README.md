@@ -77,6 +77,11 @@ None
 
 --------------------
 ## Front-End/Back-End Meeting Mar 16, 2022
+Front-End
+* completed login for employee sucessfully 
+* completed login for customer successfully 
+* Discussed login and employee UI
+
 
 --------------------
 ## Front-End/Back-End Meeting Mar 17, 2022
