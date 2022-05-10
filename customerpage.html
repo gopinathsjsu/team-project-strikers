@@ -250,6 +250,7 @@
       const res = await fetch(_config.api.invokeUrl + "/booking/byuser", requestOptions);
       const json = await res.json();
       console.log(json);
+      alert("Booking Cancelled"); 
       // const body = json['guestList'];
       // const customer_len = Object.keys(body).length;
 
