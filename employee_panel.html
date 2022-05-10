@@ -55,6 +55,60 @@
     }
   </style>
   <script>
+    var callHotelGuestListAPI2 = async () => {  //Start of get boooking reservation API
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+      const res = await fetch("https://v69x1qvvyj.execute-api.us-west-1.amazonaws.com/dev/booking", requestOptions);
+      const json = await res.json();
+      const body = json.body.Items;
+      console.log(body);
+
+      const customer_len = Object.keys(body).length;
+      var col = [];
+      for (let i = 0; i < customer_len; i++) {
+        for (var key in body[i]) {
+          if(col.indexOf(key) === -1) {
+            col.push(key);
+          }
+        }
+      }
+
+      var table = document.createElement("table");
+
+      var tr = table.insertRow(-1);                   // TABLE ROW.
+
+      for (var i = 0; i < col.length; i++) {
+        var th = document.createElement("th");      // TABLE HEADER.
+        th.innerHTML = col[i];
+        tr.appendChild(th);
+      }
+
+      for (var i = 0; i < customer_len; i++) {
+
+        tr = table.insertRow(-1);
+
+        for (var j = 0; j < col.length; j++) {
+          var tabCell = tr.insertCell(-1);
+          if (col[j] === 'hotel') {
+            tabCell.innerHTML = body[i][col[j]].hotelId;
+          }
+          else {
+            tabCell.innerHTML = body[i][col[j]];
+          }
+        }
+      }
+
+      var divContainer = document.getElementById("guestList");
+      divContainer.innerHTML = "";
+      divContainer.appendChild(table);
+    }
+    </script>
+  <script>
     var callHotelGuestListAPI = async (hotelId) => {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -206,7 +260,65 @@
       divContainer.appendChild(table);
     }
   </script>
+  <script>
+    var callGuestBookingAPI2 = async (username) => {  //Start of get boooking reservation API
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      console.log(username);
+      var raw = JSON.stringify({
+        "username": username,
+      });
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      const res = await fetch("https://v69x1qvvyj.execute-api.us-west-1.amazonaws.com/dev/booking/byuser", requestOptions);
+      const json = await res.json();
+      const body = json.body.Items;
+      console.log(body);
 
+      const customer_len = Object.keys(body).length;
+      var col = [];
+      for (let i = 0; i < customer_len; i++) {
+        for (var key in body[i]) {
+          if(col.indexOf(key) === -1) {
+            col.push(key);
+          }
+        }
+      }
+
+      var table = document.createElement("table");
+
+      var tr = table.insertRow(-1);                   // TABLE ROW.
+
+      for (var i = 0; i < col.length; i++) {
+        var th = document.createElement("th");      // TABLE HEADER.
+        th.innerHTML = col[i];
+        tr.appendChild(th);
+      }
+
+      for (var i = 0; i < customer_len; i++) {
+
+        tr = table.insertRow(-1);
+
+        for (var j = 0; j < col.length; j++) {
+          var tabCell = tr.insertCell(-1);
+          if (col[j] === 'hotel') {
+            tabCell.innerHTML = body[i][col[j]].hotelId;
+          }
+          else {
+            tabCell.innerHTML = body[i][col[j]];
+          }
+        }
+      }
+
+      var divContainer = document.getElementById("guestBooking");
+      divContainer.innerHTML = "";
+      divContainer.appendChild(table);
+    }
+  </script>
   <script>
     var callGuestBookingAPI = async (guestId) => {
       var myHeaders = new Headers();
@@ -272,8 +384,7 @@
   <div class="w3-half w3-margin-bottom">
     <div class="w3-container w3-white">
       <h3>Hotel Guest List</h3>
-      <input type="text" id="hotelId">
-      <button type="button" onclick="callHotelGuestListAPI(document.getElementById('hotelId').value)">Get Hotel Guest List</button>
+      <button type="button" onclick="callHotelGuestListAPI2()">Get Hotel Guest List</button>
       <p class="styled-table" id="guestList"> </p>
     </div>
   </div>
@@ -289,7 +400,7 @@
     <div class="w3-container w3-white">
       <h3>Booking Information</h3>
       <input type="text" id="guestId2">
-      <button type="button" onclick="callGuestBookingAPI(document.getElementById('guestId2').value)">Get Guest Booking</button>
+      <button type="button" onclick="callGuestBookingAPI2(document.getElementById('guestId2').value)">Get Guest Booking</button>
       <p class="styled-table" id="guestBooking"> </p>
     </div>
   </div>
