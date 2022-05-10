@@ -127,15 +127,20 @@
   </section>
 
   <script>
+    var username;
     function getUsername() {
       Strikers.authUser
-        .then(e => { document.cookie = 'username=' + e.username; })
+        .then(e => { username = e.username; })
         .catch(err => {
           alert(err);
           window.location.href = '/login.html';
         });
-      return getCookie('username');
+      return username;//getCookie('username');
     }
+    
+    $(document).ready(function() {
+      getUsername();
+    })
 
     var callBookingHotelAPI = async (hotelId) => {  //Start of boooking hotel API
       var myHeaders = new Headers();
