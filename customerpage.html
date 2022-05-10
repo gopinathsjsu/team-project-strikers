@@ -41,9 +41,12 @@
 
         <h2>It's not justy a hotel it's paradise</h2>
         <p>With our state of the art pricing along with our state of the art facilities, who wouldn't want to stay at
-          Whitespring Hotels. Book your stay today and you won't regret it! Enjoy some of out wonderful amenities including a state of the art gym that includes an indoor track
-          and classes for all ages to enjoy! Our swimming pools would be a great way to cool down after a nice gym session! Easy-to-access parking will also include valet parking. 
-          Our delicious meals will include continental breakfast, lunch, and dinner which will all include room service!</p>
+          Whitespring Hotels. Book your stay today and you won't regret it! Enjoy some of out wonderful amenities
+          including a state of the art gym that includes an indoor track
+          and classes for all ages to enjoy! Our swimming pools would be a great way to cool down after a nice gym
+          session! Easy-to-access parking will also include valet parking.
+          Our delicious meals will include continental breakfast, lunch, and dinner which will all include room service!
+        </p>
       </div>
       <div class="imgBox">
         <img src="hotel.jpg" class="hotel">
@@ -90,7 +93,9 @@
           <input type="text" id="input_city" placeholder="San Jose" value="San Jose">
         </div>
       </div>
-      <button class="search" onClick="myOnClickFn()">Search</button>
+      <button class="search" onClick="myOnClickFn()">
+        <font size="5">Search</font>
+      </button>
 
       <script>
         $('#searchhotel').ready(function () {
@@ -141,12 +146,13 @@
       var checkout_date = $('#input_checkoutdate').val();
       console.log(username);
       var hotelObj = findHotel(hotelId);
+      var options = getOptions(hotelObj);
       var raw = JSON.stringify({
         "username": username,
         "hotel": hotelObj,
         "checkin_date": checkin_date,
         "checkout_date": checkout_date,
-        "options": "some options"
+        "options": options
       });
       var requestOptions = {
         method: 'POST',
@@ -157,7 +163,11 @@
       const res = await fetch(_config.api.invokeUrl + "/booking", requestOptions);
       const json = await res.json();
       console.log(json);
-      alert("booked");
+      if (json.statusCode == "200") {
+        alert(hotelObj.name + " booked");
+      } else {
+        alert("Sorry! Cannot book " + hotelObj.name + " at the momment");
+      }
       // const body = json['guestList'];
       // const customer_len = Object.keys(body).length;
 
@@ -199,11 +209,14 @@
   </script>
 
 
-    <div><button class="search" onClick="myBookingReservationLoad()">See My BookingReservation</button>
-    </div>
-    
+  <div align="center" class="book">
+    <button class="search" onClick="myBookingReservationLoad()">
+      <font size=5>See My Reservation</font>
+    </button>
+  </div>
+
   <section id="myBookingReservation">
-     <div style="height:440; position:relative; overflow:auto" id="BookingReservation">
+    <div style="height:440; position:relative; overflow:auto" id="BookingReservation">
 
     </div>
 
@@ -242,7 +255,11 @@
     var callCancelHotelAPI = async (cancellingId) => {  //Start of cancelling hotel API
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      var raw = JSON.stringify({ "bookingID": cancellingId });
+      var username = getUsername();
+      var raw = JSON.stringify({
+        "username": username,
+        "bookingId": cancellingId
+      });
       var requestOptions = {
         method: 'DELETE',
         headers: myHeaders,
@@ -252,7 +269,12 @@
       const res = await fetch(_config.api.invokeUrl + "/booking/byuser", requestOptions);
       const json = await res.json();
       console.log(json);
-      alert("Booking Cancelled"); 
+      if (json.statusCode == "200") {
+        alert("Booking(" + cancellingId + ") cancelled successfully")
+      } else {
+        alert("Sorry! Cancel unsuccessful");
+      }
+
       // const body = json['guestList'];
       // const customer_len = Object.keys(body).length;
 
@@ -308,28 +330,32 @@
         <div class="accordionItem open">
           <h2 class="accordionIHeading">Fitness/Gym</h2>
           <div class="accordionItemContent">
-            <p>Get a workout in while you're on your stay with our state of the art gym! It includes an indoor track, a weighlifting area, and many classes for those to enjoy for all ages!
+            <p>Get a workout in while you're on your stay with our state of the art gym! It includes an indoor track, a
+              weighlifting area, and many classes for those to enjoy for all ages!
             </p>
           </div>
         </div>
         <div class="accordionItem close">
           <h2 class="accordionIHeading">Swimming Pool</h2>
           <div class="accordionItemContent">
-            <p>Enjoy a day out in the sun with our kid-freindly pool, or a chilly night out in our jaccuzi! A perfect way to tan and a perfect way to cool off after a nice session at our gym.
+            <p>Enjoy a day out in the sun with our kid-freindly pool, or a chilly night out in our jaccuzi! A perfect
+              way to tan and a perfect way to cool off after a nice session at our gym.
             </p>
           </div>
         </div>
         <div class="accordionItem close">
           <h2 class="accordionIHeading">Parking</h2>
           <div class="accordionItemContent">
-            <p>Parking is offered with the stay at no additional cost! Our easy-to-access parking will also include valet parking! 
+            <p>Parking is offered with the stay at no additional cost! Our easy-to-access parking will also include
+              valet parking!
             </p>
           </div>
         </div>
         <div class="accordionItem close">
           <h2 class="accordionIHeading">Meals</h2>
           <div class="accordionItemContent">
-            <p>With your stay we offer continental breakfast, lunch, and dinner! All these meals will be made fresh and will be also available for room service! 
+            <p>With your stay we offer continental breakfast, lunch, and dinner! All these meals will be made fresh and
+              will be also available for room service!
             </p>
           </div>
         </div>
