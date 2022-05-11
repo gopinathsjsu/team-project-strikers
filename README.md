@@ -10,12 +10,12 @@ Contribution:
 * Govinder Somal: Build Customer-related pages, customer login page, prepare Project Journal
 * Allen Wu: Build Homepage and Employee-related pages, prepare Project Journal, Sprint Task, and Project Board
 
-GitHub Repo: https://github.com/gopinathsjsu/team-project-strikers  
-Project Board: https://github.com/gopinathsjsu/team-project-strikers/projects/1  
-Project Journal: [https://github.com/gopinathsjsu/team-project-strikers#project-journal](#project-journal)  
-Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFBIDQjalL-VVkMITGzVBJugDizFIrCg/edit?usp=sharing  
-Scrum Report: https://docs.google.com/spreadsheets/d/1Y-J9mMlhnB4r8vKcwU0ev-IwQ0v5BtKEsevzPvtVP94/edit?usp=sharing
-Sprint Journal: https://docs.google.com/spreadsheets/d/1HR65H7vNAIfzPknlVhWBMAeWOWFI1eitcap3Az7l_2U/edit#gid=1887300001
+- GitHub Repo: https://github.com/gopinathsjsu/team-project-strikers  
+- Project Board: https://github.com/gopinathsjsu/team-project-strikers/projects/1  
+- Project Journal: [https://github.com/gopinathsjsu/team-project-strikers#project-journal](#project-journal)  
+- Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFBIDQjalL-VVkMITGzVBJugDizFIrCg/edit?usp=sharing  
+- Scrum Report: https://docs.google.com/spreadsheets/d/1Y-J9mMlhnB4r8vKcwU0ev-IwQ0v5BtKEsevzPvtVP94/edit?usp=sharing
+- Sprint Journal: https://docs.google.com/spreadsheets/d/1HR65H7vNAIfzPknlVhWBMAeWOWFI1eitcap3Az7l_2U/edit#gid=1887300001
   
 [Presentation Slides](https://github.com/gopinathsjsu/team-project-strikers/blob/main/Slides/Presentation%20slides.pptx)  
   
