@@ -96,10 +96,11 @@ None
 
 --------------------
 ## Front-End/Back-End Text Meeting Mar 15, 2022
-
-* completed homepage sucessfully 
+All Team  
 * Discussed admin/customer login for front-end
 * Discussed api's and cognito pools for back-end
+Front-End  
+* completed homepage sucessfully 
 ![Homepage](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/homepage.png)
 
 --------------------
@@ -163,10 +164,10 @@ Front-End
 
 --------------------
 ## Front-End/Back-End Meeting April 28, 2022
-Front-End
+All Team  
 * Worked together to complete API and front-end integration with APIs 
 
 --------------------
 ## Front-End/Back-End Meeting April 29, 2022
-Front-End
+All Team  
 * Successfully completed Front-End
