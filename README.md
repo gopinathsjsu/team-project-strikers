@@ -24,6 +24,8 @@ Username/Password: strikers/strikers
 ![Kanban](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/kanban.png)
 ![Burndown Chart](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/burndown_chart.png)
 ![Weekly Scrum](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/weekly_scrum.png)
+![Sprint Journal - Team](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Sprint Journal-team.png)
+
 
 # XP Principles
 ![image](https://user-images.githubusercontent.com/90219670/167729637-6e2fa2c5-9b37-46d8-bea9-a787693120d2.png)
@@ -40,7 +42,6 @@ Username/Password: strikers/strikers
 ![Project architecture](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Project_Architecture_20220302.png)
 
 [Meeting documents](https://github.com/gopinathsjsu/team-project-strikers/tree/main/meetings/20220302)
-[Sprint Journal -  Team](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Sprint Journal-team.png)
 **Action items before next meeting**
 1. Do the AWS tutorial
 
