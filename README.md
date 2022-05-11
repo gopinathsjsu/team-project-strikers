@@ -21,6 +21,7 @@ Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFB
 Username/Password: strikers/strikers  
 
 # Scrum Practice
+![Kanban](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/kanban.png)
 ![Burndown Chart](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/burndown_chart.png)
 ![Weekly Scrum](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/weekly_scrum.png)
 
