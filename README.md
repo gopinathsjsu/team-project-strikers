@@ -16,8 +16,10 @@ Project Journal: [https://github.com/gopinathsjsu/team-project-strikers#project-
 Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFBIDQjalL-VVkMITGzVBJugDizFIrCg/edit?usp=sharing  
   
 [Presentation Slides](https://github.com/gopinathsjsu/team-project-strikers/blob/main/Slides/Presentation%20slides.pptx)  
-[Demo Website](https://main.d3fb7my9ge6bqg.amplifyapp.com/)  
   
+[Demo Website](https://main.d3fb7my9ge6bqg.amplifyapp.com/)  
+Username/Password: strikers/strikers  
+
 # Scrum Practice
 ![Burndown Chart](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/burndown_chart.png)
 ![Weekly Scrum](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/weekly_scrum.png)
