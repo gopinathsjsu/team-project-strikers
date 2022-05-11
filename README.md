@@ -24,7 +24,7 @@ Username/Password: strikers/strikers
 ![Kanban](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/kanban.png)
 ![Burndown Chart](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/burndown_chart.png)
 ![Weekly Scrum](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/weekly_scrum.png)
-![Sprint Journal - Team](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Sprint Journal-team.png)
+![Sprint Journal - Team](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Sprint-Journal-team.png)
 
 
 # XP Principles
