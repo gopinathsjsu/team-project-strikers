@@ -20,7 +20,7 @@ Google Sprint Task Sheet: https://docs.google.com/spreadsheets/d/1XSfTnBOW_YcOFB
 [Demo Website](https://main.d3fb7my9ge6bqg.amplifyapp.com/)  
 Username/Password: strikers/strikers  
 
-# Scrum Practice
+# Agile Scrum Process
 ![Kanban](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/kanban.png)
 ![Burndown Chart](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/burndown_chart.png)
 ![Weekly Scrum](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/weekly_scrum.png)
