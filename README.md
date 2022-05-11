@@ -99,6 +99,7 @@ None
 All Team  
 * Discussed admin/customer login for front-end
 * Discussed api's and cognito pools for back-end  
+
 Front-End  
 * completed homepage sucessfully 
 ![Homepage](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/homepage.png)
