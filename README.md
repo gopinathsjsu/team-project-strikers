@@ -40,7 +40,7 @@ Username/Password: strikers/strikers
 ![Project architecture](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Project_Architecture_20220302.png)
 
 [Meeting documents](https://github.com/gopinathsjsu/team-project-strikers/tree/main/meetings/20220302)
-
+[Sprint Journal -  Team](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/Sprint Journal-team.png)
 **Action items before next meeting**
 1. Do the AWS tutorial
 
@@ -172,3 +172,5 @@ All Team
 ## Front-End/Back-End Meeting April 29, 2022
 All Team  
 * Successfully completed Front-End
+
+Front-End/Back-End SCRUM REPORT: https://docs.google.com/spreadsheets/d/1Y-J9mMlhnB4r8vKcwU0ev-IwQ0v5BtKEsevzPvtVP94/edit?usp=sharing
