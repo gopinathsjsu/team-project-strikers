@@ -98,7 +98,7 @@ None
 ## Front-End/Back-End Text Meeting Mar 15, 2022
 All Team  
 * Discussed admin/customer login for front-end
-* Discussed api's and cognito pools for back-end
+* Discussed api's and cognito pools for back-end  
 Front-End  
 * completed homepage sucessfully 
 ![Homepage](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/homepage.png)
