@@ -93,8 +93,10 @@ None
 --------------------
 ## Front-End/Back-End Text Meeting Mar 15, 2022
 
+* completed homepage sucessfully 
 * Discussed admin/customer login for front-end
 * Discussed api's and cognito pools for back-end
+![Homepage](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/homepage.png)
 
 --------------------
 ## Front-End/Back-End Meeting Mar 16, 2022
@@ -102,7 +104,8 @@ Front-End
 * completed login for employee sucessfully 
 * completed login for customer successfully 
 * Discussed login and employee UI
-
+![Employee Login](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/employee_login.png)
+![Customer Login](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/customer_login.png)
 
 --------------------
 ## Front-End/Back-End Meeting Mar 17, 2022
@@ -146,6 +149,8 @@ Front-End
 Front-End
 * Customer and Employee UI completed
 * waiting for backend api to continue integration 
+![Customer Panel](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/customer_panel.png)
+![Employee Panel](https://github.com/gopinathsjsu/team-project-strikers/blob/main/pictures/employee_panel.png)
 
 --------------------
 ## Front-End/Back-End Meeting April 27, 2022
